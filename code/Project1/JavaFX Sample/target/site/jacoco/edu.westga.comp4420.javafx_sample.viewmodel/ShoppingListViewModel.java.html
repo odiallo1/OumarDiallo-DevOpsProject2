@@ -72,7 +72,7 @@ public class ShoppingListViewModel {
 
     public void updateSelectedItemQuantity(int newQuantity) {
 <span class="fc" id="L74">        int index = this.selectedCartItemIndex.get();</span>
-<span class="pc bpc" id="L75" title="1 of 2 branches missed.">        if (index &gt;= 0) {</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if (index &gt;= 0) {</span>
 <span class="fc" id="L76">            Item item = this.cartItems.get(index);</span>
 <span class="fc" id="L77">            item.setQuantity(newQuantity);</span>
 <span class="fc" id="L78">            this.refreshCartItems();</span>

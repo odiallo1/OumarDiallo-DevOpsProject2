@@ -28,43 +28,43 @@ public class MainWindow {
 
     private ShoppingListViewModel viewModel;
 
-<span class="nc" id="L31">    public MainWindow() {</span>
-<span class="nc" id="L32">        this.viewModel = new ShoppingListViewModel();</span>
-<span class="nc" id="L33">    }</span>
+<span class="fc" id="L31">    public MainWindow() {</span>
+<span class="fc" id="L32">        this.viewModel = new ShoppingListViewModel();</span>
+<span class="fc" id="L33">    }</span>
 
     @FXML
     private void initialize() {
-<span class="nc" id="L37">        this.setupBindings();</span>
-<span class="nc" id="L38">        this.setupEventHandlers();</span>
-<span class="nc" id="L39">    }</span>
+<span class="fc" id="L37">        this.setupBindings();</span>
+<span class="fc" id="L38">        this.setupEventHandlers();</span>
+<span class="fc" id="L39">    }</span>
 
     private void setupBindings() {
-<span class="nc" id="L42">        this.availableItemsListView.setItems(this.viewModel.getAvailableItems());</span>
-<span class="nc" id="L43">        this.cartListView.setItems(this.viewModel.getCartItems());</span>
+<span class="fc" id="L42">        this.availableItemsListView.setItems(this.viewModel.getAvailableItems());</span>
+<span class="fc" id="L43">        this.cartListView.setItems(this.viewModel.getCartItems());</span>
 
         
-<span class="nc" id="L46">        this.quantityTextField.textProperty().bindBidirectional(this.viewModel.quantityTextProperty());</span>
+<span class="fc" id="L46">        this.quantityTextField.textProperty().bindBidirectional(this.viewModel.quantityTextProperty());</span>
 
        
-<span class="nc" id="L49">        this.cartListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -&gt; {</span>
+<span class="fc" id="L49">        this.cartListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -&gt; {</span>
 <span class="nc" id="L50">            int index = this.cartListView.getSelectionModel().getSelectedIndex();</span>
 <span class="nc" id="L51">            this.viewModel.setSelectedCartItemIndex(index);</span>
 <span class="nc" id="L52">        });</span>
-<span class="nc" id="L53">    }</span>
+<span class="fc" id="L53">    }</span>
 
     private void setupEventHandlers() {
-<span class="nc" id="L56">        this.addButton.setOnAction(e -&gt; this.handleAddButton());</span>
-<span class="nc" id="L57">        this.removeButton.setOnAction(e -&gt; this.handleRemoveButton());</span>
-<span class="nc" id="L58">        this.updateQuantityButton.setOnAction(e -&gt; this.handleUpdateQuantityButton());</span>
-<span class="nc" id="L59">    }</span>
+<span class="fc" id="L56">        this.addButton.setOnAction(e -&gt; this.handleAddButton());</span>
+<span class="pc" id="L57">        this.removeButton.setOnAction(e -&gt; this.handleRemoveButton());</span>
+<span class="pc" id="L58">        this.updateQuantityButton.setOnAction(e -&gt; this.handleUpdateQuantityButton());</span>
+<span class="fc" id="L59">    }</span>
 
     private void handleAddButton() {
-<span class="nc" id="L62">        Item selectedItem = this.availableItemsListView.getSelectionModel().getSelectedItem();</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (selectedItem != null) {</span>
-<span class="nc" id="L64">            this.viewModel.addSelectedItem(selectedItem);</span>
-<span class="nc" id="L65">            this.viewModel.updateSelectedItemQuantity(1);</span>
+<span class="fc" id="L62">        Item selectedItem = this.availableItemsListView.getSelectionModel().getSelectedItem();</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        if (selectedItem != null) {</span>
+<span class="fc" id="L64">            this.viewModel.addSelectedItem(selectedItem);</span>
+<span class="fc" id="L65">            this.viewModel.updateSelectedItemQuantity(1);</span>
         }
-<span class="nc" id="L67">    }</span>
+<span class="fc" id="L67">    }</span>
 
     private void handleRemoveButton() {
         

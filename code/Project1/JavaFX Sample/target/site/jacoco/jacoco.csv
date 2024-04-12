@@ -1,10 +1,10 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.viewmodel,ShoppingListViewModel,0,161,4,4,0,36,4,11,0,11
+Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.viewmodel,ShoppingListViewModel,0,161,3,5,0,36,3,12,0,11
 Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.viewmodel,HomeViewModel,93,0,6,0,28,0,12,0,9,0
 Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.model,NotesCollection,0,74,0,0,0,17,0,11,0,11
 Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.model,ShoppingList,31,37,4,2,7,10,4,4,1,4
 Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.model,Notes,23,38,5,3,6,10,8,4,4,4
-Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.model,Item,41,29,8,4,9,11,9,4,3,4
-Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.view.codebehind,HistoryWindow,37,0,0,0,11,0,2,0,2,0
-Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.view.codebehind,MainWindow,94,0,2,0,25,0,12,0,11,0
-Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample,Main,27,0,0,0,9,0,3,0,3,0
+Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.model,Item,31,39,6,6,6,14,7,6,2,5
+Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.view.codebehind,HistoryWindow,34,3,0,0,10,1,1,1,1,1
+Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample.view.codebehind,MainWindow,18,76,1,1,5,20,6,6,5,6
+Sample-JavaFX-Project,edu.westga.comp4420.javafx_sample,Main,3,24,0,0,2,7,1,2,1,2
