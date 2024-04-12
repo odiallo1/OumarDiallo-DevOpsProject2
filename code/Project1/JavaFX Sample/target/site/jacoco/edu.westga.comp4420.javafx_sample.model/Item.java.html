@@ -29,11 +29,11 @@ public class Item {
 
     @Override
     public boolean equals(Object obj) {
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (this == obj) {</span>
 <span class="fc" id="L33">            return true;</span>
         }
-<span class="nc bnc" id="L35" title="All 4 branches missed.">        if (obj == null || getClass() != obj.getClass()) {</span>
-<span class="nc" id="L36">            return false;</span>
+<span class="pc bpc" id="L35" title="3 of 4 branches missed.">        if (obj == null || getClass() != obj.getClass()) {</span>
+<span class="fc" id="L36">            return false;</span>
         }
 <span class="nc" id="L38">        Item item = (Item) obj;</span>
 <span class="nc" id="L39">        return this.name.equals(item.name);</span>
@@ -46,7 +46,7 @@ public class Item {
 
     @Override
     public String toString() {
-<span class="nc" id="L49">        return this.name + &quot; - Quantity: &quot; + this.quantity;</span>
+<span class="fc" id="L49">        return this.name + &quot; - Quantity: &quot; + this.quantity;</span>
     }
 
 }
