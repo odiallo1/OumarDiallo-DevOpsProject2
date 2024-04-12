@@ -24,7 +24,7 @@ public class ShoppingListViewModel {
 
         
 <span class="fc" id="L26">        this.selectedCartItemIndex.addListener((obs, oldVal, newVal) -&gt; {</span>
-<span class="pc bpc" id="L27" title="2 of 4 branches missed.">            if (newVal != null &amp;&amp; newVal.intValue() &gt;= 0) {</span>
+<span class="pc bpc" id="L27" title="1 of 4 branches missed.">            if (newVal != null &amp;&amp; newVal.intValue() &gt;= 0) {</span>
 <span class="fc" id="L28">                Item selectedItem = this.cartItems.get(newVal.intValue());</span>
 <span class="fc" id="L29">                this.quantityText.set(String.valueOf(selectedItem.getQuantity()));</span>
             }

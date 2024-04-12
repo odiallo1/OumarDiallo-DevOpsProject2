@@ -47,14 +47,14 @@ public class MainWindow {
 
        
 <span class="fc" id="L49">        this.cartListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -&gt; {</span>
-<span class="nc" id="L50">            int index = this.cartListView.getSelectionModel().getSelectedIndex();</span>
-<span class="nc" id="L51">            this.viewModel.setSelectedCartItemIndex(index);</span>
-<span class="nc" id="L52">        });</span>
+<span class="fc" id="L50">            int index = this.cartListView.getSelectionModel().getSelectedIndex();</span>
+<span class="fc" id="L51">            this.viewModel.setSelectedCartItemIndex(index);</span>
+<span class="fc" id="L52">        });</span>
 <span class="fc" id="L53">    }</span>
 
     private void setupEventHandlers() {
 <span class="fc" id="L56">        this.addButton.setOnAction(e -&gt; this.handleAddButton());</span>
-<span class="pc" id="L57">        this.removeButton.setOnAction(e -&gt; this.handleRemoveButton());</span>
+<span class="fc" id="L57">        this.removeButton.setOnAction(e -&gt; this.handleRemoveButton());</span>
 <span class="pc" id="L58">        this.updateQuantityButton.setOnAction(e -&gt; this.handleUpdateQuantityButton());</span>
 <span class="fc" id="L59">    }</span>
 
@@ -67,8 +67,8 @@ public class MainWindow {
 <span class="fc" id="L67">    }</span>
 
     private void handleRemoveButton() {
-        
-<span class="nc" id="L71">    }</span>
+<span class="fc" id="L70">        this.viewModel.removeSelectedItem();</span>
+<span class="fc" id="L71">    }</span>
 
     private void handleUpdateQuantityButton() {
         try {

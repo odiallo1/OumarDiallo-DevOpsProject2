@@ -67,7 +67,7 @@ public class MainWindow {
     }
 
     private void handleRemoveButton() {
-        
+        this.viewModel.removeSelectedItem();
     }
 
     private void handleUpdateQuantityButton() {
