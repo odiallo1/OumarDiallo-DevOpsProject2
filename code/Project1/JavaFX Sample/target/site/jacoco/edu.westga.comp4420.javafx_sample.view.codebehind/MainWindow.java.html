@@ -55,7 +55,7 @@ public class MainWindow {
     private void setupEventHandlers() {
 <span class="fc" id="L56">        this.addButton.setOnAction(e -&gt; this.handleAddButton());</span>
 <span class="fc" id="L57">        this.removeButton.setOnAction(e -&gt; this.handleRemoveButton());</span>
-<span class="pc" id="L58">        this.updateQuantityButton.setOnAction(e -&gt; this.handleUpdateQuantityButton());</span>
+<span class="fc" id="L58">        this.updateQuantityButton.setOnAction(e -&gt; this.handleUpdateQuantityButton());</span>
 <span class="fc" id="L59">    }</span>
 
     private void handleAddButton() {
@@ -72,12 +72,12 @@ public class MainWindow {
 
     private void handleUpdateQuantityButton() {
         try {
-<span class="nc" id="L75">        int newQuantity = Integer.parseInt(this.quantityTextField.getText());</span>
-<span class="nc" id="L76">        this.viewModel.updateSelectedItemQuantity(newQuantity);</span>
+<span class="fc" id="L75">        int newQuantity = Integer.parseInt(this.quantityTextField.getText());</span>
+<span class="fc" id="L76">        this.viewModel.updateSelectedItemQuantity(newQuantity);</span>
 <span class="nc" id="L77">    } catch (NumberFormatException ex) {</span>
 <span class="nc" id="L78">        System.out.println(&quot;Invalid quantity&quot;);</span>
-<span class="nc" id="L79">    }</span>
-<span class="nc" id="L80">    }</span>
+<span class="fc" id="L79">    }</span>
+<span class="fc" id="L80">    }</span>
 }
 
 
