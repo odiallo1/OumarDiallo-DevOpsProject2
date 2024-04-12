@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: edu.westga.devops.a4.test.view.main_window.TestShoppingListUI
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.176 s - in edu.westga.devops.a4.test.view.main_window.TestShoppingListUI
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 10.222 s <<< FAILURE! - in edu.westga.devops.a4.test.view.main_window.TestShoppingListUI
+testRemoveItemFromCart  Time elapsed: 3.071 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: ListView is empty (contains no items)
+     but: was contains 1 items
+	at edu.westga.devops.a4.test.view.main_window.TestShoppingListUI.testRemoveItemFromCart(TestShoppingListUI.java:38)
+

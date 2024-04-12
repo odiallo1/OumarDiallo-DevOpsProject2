@@ -11,6 +11,7 @@ import javafx.scene.input.KeyCode;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.api.FxAssert;
+import edu.westga.comp4420.javafx_sample.model.Item;
 import org.testfx.matcher.control.ListViewMatchers;
 import edu.westga.comp4420.javafx_sample.Main;
 public class TestShoppingListUI extends ApplicationTest {
@@ -26,5 +27,33 @@ public class TestShoppingListUI extends ApplicationTest {
         clickOn("#addButton");
         FxAssert.verifyThat("#cartListView", ListViewMatchers.hasItems(1));
     }
+
+    @Test
+    public void testRemoveItemFromCart() {
+        clickOn("#availableItemsListView").type(KeyCode.DOWN).type(KeyCode.ENTER);
+        clickOn("#addButton");
+
+        clickOn("#cartListView").type(KeyCode.DOWN).type(KeyCode.ENTER);
+        clickOn("#removeButton");
+        FxAssert.verifyThat("#cartListView", ListViewMatchers.isEmpty());
+    }
+
+    @Test
+    public void testUpdateQuantityOfItem() {
+        clickOn("#availableItemsListView").type(KeyCode.DOWN).type(KeyCode.ENTER);
+        clickOn("#addButton");
+
+        clickOn("#cartListView").type(KeyCode.DOWN).type(KeyCode.ENTER);
+
+
+        doubleClickOn("#quantityTextField").write("5");
+        clickOn("#updateQuantityButton");
+        Item updatedItem = new Item("Eggs");
+        updatedItem.setQuantity(5);
+
+        FxAssert.verifyThat("#cartListView", ListViewMatchers.hasListCell(updatedItem));
+    }
+
+
 
 }

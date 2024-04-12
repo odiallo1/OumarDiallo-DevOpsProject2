@@ -71,8 +71,13 @@ public class MainWindow {
 <span class="nc" id="L71">    }</span>
 
     private void handleUpdateQuantityButton() {
-        
-<span class="nc" id="L75">    }</span>
+        try {
+<span class="nc" id="L75">        int newQuantity = Integer.parseInt(this.quantityTextField.getText());</span>
+<span class="nc" id="L76">        this.viewModel.updateSelectedItemQuantity(newQuantity);</span>
+<span class="nc" id="L77">    } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L78">        System.out.println(&quot;Invalid quantity&quot;);</span>
+<span class="nc" id="L79">    }</span>
+<span class="nc" id="L80">    }</span>
 }
 
 
