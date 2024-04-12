@@ -71,7 +71,12 @@ public class MainWindow {
     }
 
     private void handleUpdateQuantityButton() {
-        
+        try {
+        int newQuantity = Integer.parseInt(this.quantityTextField.getText());
+        this.viewModel.updateSelectedItemQuantity(newQuantity);
+    } catch (NumberFormatException ex) {
+        System.out.println("Invalid quantity");
+    }
     }
 }
 
