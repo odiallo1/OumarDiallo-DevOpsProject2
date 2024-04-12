@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShoppingListViewModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sample-JavaFX-Project</a> &gt; <a href="index.source.html" class="el_package">edu.westga.comp4420.javafx_sample.viewmodel</a> &gt; <span class="el_source">ShoppingListViewModel.java</span></div><h1>ShoppingListViewModel.java</h1><pre class="source lang-java linenums">package edu.westga.comp4420.javafx_sample.viewmodel;
+
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import edu.westga.comp4420.javafx_sample.model.Item;
+import edu.westga.comp4420.javafx_sample.model.ShoppingList;
+
+public class ShoppingListViewModel {
+    private ShoppingList cart;
+    private ObservableList&lt;Item&gt; cartItems;
+    private ObservableList&lt;Item&gt; availableItems;
+    private SimpleIntegerProperty selectedCartItemIndex;
+    private SimpleStringProperty quantityText;
+
+<span class="fc" id="L17">    public ShoppingListViewModel() {</span>
+<span class="fc" id="L18">        this.cart = new ShoppingList();</span>
+<span class="fc" id="L19">        this.cartItems = FXCollections.observableArrayList(this.cart.getItems());</span>
+<span class="fc" id="L20">        this.availableItems = FXCollections.observableArrayList();</span>
+<span class="fc" id="L21">        this.selectedCartItemIndex = new SimpleIntegerProperty(-1);  </span>
+<span class="fc" id="L22">        this.quantityText = new SimpleStringProperty(&quot;&quot;);</span>
+<span class="fc" id="L23">        this.populateAvailableItems();</span>
+
+        
+<span class="fc" id="L26">        this.selectedCartItemIndex.addListener((obs, oldVal, newVal) -&gt; {</span>
+<span class="pc bpc" id="L27" title="2 of 4 branches missed.">            if (newVal != null &amp;&amp; newVal.intValue() &gt;= 0) {</span>
+<span class="fc" id="L28">                Item selectedItem = this.cartItems.get(newVal.intValue());</span>
+<span class="fc" id="L29">                this.quantityText.set(String.valueOf(selectedItem.getQuantity()));</span>
+            }
+<span class="fc" id="L31">        });</span>
+<span class="fc" id="L32">    }</span>
+
+    public void setSelectedCartItemIndex(int index) {
+<span class="fc" id="L35">        this.selectedCartItemIndex.set(index);  </span>
+<span class="fc" id="L36">    }</span>
+
+    private void populateAvailableItems() {
+<span class="fc" id="L39">        this.availableItems.addAll(</span>
+            new Item(&quot;Apples&quot;),
+            new Item(&quot;Bananas&quot;),
+            new Item(&quot;Carrots&quot;),
+            new Item(&quot;Doughnuts&quot;),
+            new Item(&quot;Eggs&quot;)
+        );
+<span class="fc" id="L46">    }</span>
+
+    public ObservableList&lt;Item&gt; getCartItems() {
+<span class="fc" id="L49">        return this.cartItems;</span>
+    }
+
+    public ObservableList&lt;Item&gt; getAvailableItems() {
+<span class="fc" id="L53">        return this.availableItems;</span>
+    }
+
+    public SimpleStringProperty quantityTextProperty() {
+<span class="fc" id="L57">        return this.quantityText;</span>
+    }
+
+    public void addSelectedItem(Item item) {
+<span class="fc" id="L61">        this.cart.addItem(item);</span>
+<span class="fc" id="L62">        this.refreshCartItems();</span>
+<span class="fc" id="L63">    }</span>
+
+    public void removeSelectedItem() {
+<span class="fc" id="L66">        int index = this.selectedCartItemIndex.get();</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if (index &gt;= 0) {</span>
+<span class="fc" id="L68">            this.cart.removeItem(this.cartItems.get(index));</span>
+<span class="fc" id="L69">            this.refreshCartItems();</span>
+        }
+<span class="fc" id="L71">    }</span>
+
+    public void updateSelectedItemQuantity(int newQuantity) {
+<span class="fc" id="L74">        int index = this.selectedCartItemIndex.get();</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">        if (index &gt;= 0) {</span>
+<span class="fc" id="L76">            Item item = this.cartItems.get(index);</span>
+<span class="fc" id="L77">            item.setQuantity(newQuantity);</span>
+<span class="fc" id="L78">            this.refreshCartItems();</span>
+        }
+<span class="fc" id="L80">    }</span>
+
+    private void refreshCartItems() {
+<span class="fc" id="L83">        this.cartItems.setAll(this.cart.getItems());</span>
+<span class="fc" id="L84">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
