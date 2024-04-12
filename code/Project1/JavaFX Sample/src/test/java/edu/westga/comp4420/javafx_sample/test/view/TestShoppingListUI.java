@@ -27,4 +27,13 @@ public class TestShoppingListUI extends ApplicationTest {
         FxAssert.verifyThat("#cartListView", ListViewMatchers.hasItems(1));
     }
 
+    @Test
+    public void testRemoveItemFromCart() {
+        clickOn("#availableItemsListView").type(KeyCode.DOWN).type(KeyCode.ENTER);
+        clickOn("#addButton");
+        clickOn("#cartListView").type(KeyCode.DOWN).type(KeyCode.ENTER);
+        clickOn("#removeButton");
+        FxAssert.verifyThat("#cartListView", ListViewMatchers.isEmpty());
+    }
+
 }
