@@ -1,41 +1,59 @@
 package edu.westga.comp4420.javafx_sample.test.viewmodel;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import edu.westga.comp4420.javafx_sample.model.Notes;
-import edu.westga.comp4420.javafx_sample.model.NotesCollection;
-import edu.westga.comp4420.javafx_sample.viewmodel.HomeViewModel;
+import javafx.collections.ObservableList;
+import edu.westga.comp4420.javafx_sample.model.Item;
+import edu.westga.comp4420.javafx_sample.viewmodel.ShoppingListViewModel;
 
 class TestHomeViewModel {
 
-    private HomeViewModel viewModel;
+     private ShoppingListViewModel viewModel;
 
     @BeforeEach
     void setUp() {
-        this.viewModel = new HomeViewModel(new NotesCollection());
+        this.viewModel = new ShoppingListViewModel();
     }
 
     @Test
-    void testAddNewNote() {
-        this.viewModel.addNewNote();
-        assertEquals(0, this.viewModel.getNotesList().size(), "Should have 1 note after adding");
-    }
-
-
-    @Test
-    void testFilterNotesByTopicWithNoMatchingTopic() {
-        this.viewModel.addNewNote(); // Adds a note without any topic
-        this.viewModel.filterNotesByTopic("Java");
-        assertTrue(this.viewModel.getNotesList().isEmpty(), "No notes should match the 'Java' topic");
+    void testAddSelectedItemShouldIncreaseCartSize() {
+        Item newItem = new Item("Oranges");
+        this.viewModel.addSelectedItem(newItem);
+        ObservableList<Item> cartItems = this.viewModel.getCartItems();
+        assertEquals(1, cartItems.size(), "Cart should have 1 item after adding one.");
     }
 
     @Test
-    void testFilterNotesByTopicReturnsAllNotesWhenTopicIsEmpty() {
-        this.viewModel.addNewNote();
-        this.viewModel.filterNotesByTopic("");
-        assertEquals(0, this.viewModel.getNotesList().size(), "Filtering with an empty string should return all notes");
+    void testRemoveSelectedItemShouldDecreaseCartSize() {
+        Item newItem = new Item("Oranges");
+        this.viewModel.addSelectedItem(newItem);
+        this.viewModel.setSelectedCartItemIndex(0);
+        this.viewModel.removeSelectedItem();
+        ObservableList<Item> cartItems = this.viewModel.getCartItems();
+        assertTrue(cartItems.isEmpty(), "Cart should be empty after removing the item.");
+    }
+
+    @Test
+    void testUpdateSelectedItemQuantity() {
+        Item newItem = new Item("Oranges");
+        this.viewModel.addSelectedItem(newItem);
+        this.viewModel.setSelectedCartItemIndex(0);
+        this.viewModel.updateSelectedItemQuantity(5);
+        ObservableList<Item> cartItems = this.viewModel.getCartItems();
+        assertEquals(5, cartItems.get(0).getQuantity(), "Quantity of the item should be updated to 5.");
+    }
+
+    @Test
+    void testSelectionIndexUpdatesQuantityText() {
+        this.viewModel.addSelectedItem(new Item("Oranges"));
+        this.viewModel.setSelectedCartItemIndex(0);
+        assertEquals("0", this.viewModel.quantityTextProperty().get(), "Quantity text should reflect the selected item's quantity.");
+    }
+
+    @Test
+    void testPopulateAvailableItemsShouldInitializeList() {
+        ObservableList<Item> availableItems = this.viewModel.getAvailableItems();
+        assertNotEquals(0, availableItems.size(), "Available items should be initialized and not empty.");
     }
 }

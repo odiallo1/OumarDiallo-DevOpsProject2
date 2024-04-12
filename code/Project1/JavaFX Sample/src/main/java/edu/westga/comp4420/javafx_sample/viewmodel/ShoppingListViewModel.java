@@ -10,14 +10,17 @@ import edu.westga.comp4420.javafx_sample.model.ShoppingList;
 public class ShoppingListViewModel {
     private ShoppingList cart;
     private ObservableList<Item> cartItems;
+    private ObservableList<Item> availableItems;
     private SimpleIntegerProperty selectedCartItemIndex;
     private SimpleStringProperty quantityText;
 
     public ShoppingListViewModel() {
         this.cart = new ShoppingList();
         this.cartItems = FXCollections.observableArrayList(this.cart.getItems());
+        this.availableItems = FXCollections.observableArrayList();
         this.selectedCartItemIndex = new SimpleIntegerProperty(-1);  
         this.quantityText = new SimpleStringProperty("");
+        this.populateAvailableItems();
 
         
         this.selectedCartItemIndex.addListener((obs, oldVal, newVal) -> {
@@ -28,8 +31,26 @@ public class ShoppingListViewModel {
         });
     }
 
+    public void setSelectedCartItemIndex(int index) {
+        this.selectedCartItemIndex.set(index);  
+    }
+
+    private void populateAvailableItems() {
+        this.availableItems.addAll(
+            new Item("Apples"),
+            new Item("Bananas"),
+            new Item("Carrots"),
+            new Item("Doughnuts"),
+            new Item("Eggs")
+        );
+    }
+
     public ObservableList<Item> getCartItems() {
         return this.cartItems;
+    }
+
+    public ObservableList<Item> getAvailableItems() {
+        return this.availableItems;
     }
 
     public SimpleStringProperty quantityTextProperty() {
