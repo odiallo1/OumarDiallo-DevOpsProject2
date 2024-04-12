@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainWindow.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sample-JavaFX-Project</a> &gt; <a href="index.source.html" class="el_package">edu.westga.comp4420.javafx_sample.view.codebehind</a> &gt; <span class="el_source">MainWindow.java</span></div><h1>MainWindow.java</h1><pre class="source lang-java linenums">package edu.westga.comp4420.javafx_sample.view.codebehind;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import edu.westga.comp4420.javafx_sample.model.Item;
+import edu.westga.comp4420.javafx_sample.viewmodel.ShoppingListViewModel;
+public class MainWindow {
+
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private ListView&lt;Item&gt; availableItemsListView;
+
+    @FXML
+    private ListView&lt;Item&gt; cartListView;
+
+    @FXML
+    private TextField quantityTextField;
+
+    @FXML
+    private Button removeButton;
+
+    @FXML
+    private Button updateQuantityButton;
+
+    private ShoppingListViewModel viewModel;
+
+<span class="nc" id="L31">    public MainWindow() {</span>
+<span class="nc" id="L32">        this.viewModel = new ShoppingListViewModel();</span>
+<span class="nc" id="L33">    }</span>
+
+    @FXML
+    private void initialize() {
+<span class="nc" id="L37">        this.setupBindings();</span>
+<span class="nc" id="L38">        this.setupEventHandlers();</span>
+<span class="nc" id="L39">    }</span>
+
+    private void setupBindings() {
+<span class="nc" id="L42">        this.availableItemsListView.setItems(this.viewModel.getAvailableItems());</span>
+<span class="nc" id="L43">        this.cartListView.setItems(this.viewModel.getCartItems());</span>
+
+        
+<span class="nc" id="L46">        this.quantityTextField.textProperty().bindBidirectional(this.viewModel.quantityTextProperty());</span>
+
+       
+<span class="nc" id="L49">        this.cartListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -&gt; {</span>
+<span class="nc" id="L50">            int index = this.cartListView.getSelectionModel().getSelectedIndex();</span>
+<span class="nc" id="L51">            this.viewModel.setSelectedCartItemIndex(index);</span>
+<span class="nc" id="L52">        });</span>
+<span class="nc" id="L53">    }</span>
+
+    private void setupEventHandlers() {
+<span class="nc" id="L56">        this.addButton.setOnAction(e -&gt; this.handleAddButton());</span>
+<span class="nc" id="L57">        this.removeButton.setOnAction(e -&gt; this.handleRemoveButton());</span>
+<span class="nc" id="L58">        this.updateQuantityButton.setOnAction(e -&gt; this.handleUpdateQuantityButton());</span>
+<span class="nc" id="L59">    }</span>
+
+    private void handleAddButton() {
+<span class="nc" id="L62">        Item selectedItem = this.availableItemsListView.getSelectionModel().getSelectedItem();</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (selectedItem != null) {</span>
+<span class="nc" id="L64">            this.viewModel.addSelectedItem(selectedItem);</span>
+<span class="nc" id="L65">            this.viewModel.updateSelectedItemQuantity(1);</span>
+        }
+<span class="nc" id="L67">    }</span>
+
+    private void handleRemoveButton() {
+        
+<span class="nc" id="L71">    }</span>
+
+    private void handleUpdateQuantityButton() {
+        
+<span class="nc" id="L75">    }</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
